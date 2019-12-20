@@ -32,7 +32,13 @@ switch (action) {
          processor.getExamples(cli.input[1]);      
      break;
     case '':
-         processor.wordOfTheDay(cli.input[1]);
+         processor.wordOfTheDay();
+     break;
+    case 'play':
+        
+     break;
+    default:
+         processor.getDetails(cli.input[0]);
      break;
 }
 
