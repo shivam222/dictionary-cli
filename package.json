@@ -1,0 +1,22 @@
+{
+  "name": "dictionary",
+  "version": "1.0.0",
+  "description": "it's an dictionary cli tool",
+  "main": "index.js",
+  "bin": {
+    "dict": "./dict.js"
+  },
+  "keywords": [
+    "cli-app",
+    "dictionary",
+    "meaning",
+    "words"
+  ],
+  "author": "shivamb61@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "meow": "^6.0.0",
+    "superagent": "^3.5.2",
+    "underscore": "^1.9.1"
+  }
+}
