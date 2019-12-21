@@ -17,6 +17,7 @@
   "dependencies": {
     "inquirer": "^7.0.1",
     "meow": "^6.0.0",
+    "shuffle-words": "^0.1.2",
     "superagent": "^3.5.2",
     "underscore": "^1.9.1"
   }

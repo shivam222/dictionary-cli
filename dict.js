@@ -76,7 +76,11 @@ switch (action) {
     default:
          processor.getDetails(cli.input[0])
          .then( (details) => {
-            console.log(details); // better logging
+            if (details) {
+              console.log("Great! That's a correct answer");
+            } else {
+              console.log("It's ok keep learning");
+            }
        })
        .catch( (err) => {
             console.log(err);
