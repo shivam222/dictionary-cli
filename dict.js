@@ -65,7 +65,13 @@ switch (action) {
        });
      break;
     case 'play':
-         processor.letsPlay();
+         processor.letsPlay()
+         .then( (result) => {
+            console.log(result); // better logging
+       })
+       .catch( (err) => {
+            console.log(err);
+       });
      break;
     default:
          processor.getDetails(cli.input[0])
