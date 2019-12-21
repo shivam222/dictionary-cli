@@ -15,6 +15,7 @@
   "author": "shivamb61@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^3.0.0",
     "inquirer": "^7.0.1",
     "meow": "^6.0.0",
     "shuffle-words": "^0.1.2",

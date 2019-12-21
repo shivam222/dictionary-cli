@@ -3,6 +3,7 @@
 
 const meow = require('meow');
 const processor = require('./lib/processor');
+const logger = require('./lib/logging');
 let action="";
 
 const cli = meow(`
@@ -22,68 +23,87 @@ switch (action) {
     case 'defn': 
          processor.getDefinition(cli.input[1])
          .then( (defn) => {
-              console.log(defn); // better logging
+              logger.logInfo(`Definitions of the word "${defn.word}":`);
+              logger.logKeyInArray(defn.def, "text");
          })
          .catch( (err) => {
-              console.log(err);
+              logger.logErr(err);
          });
      break;
     case 'syn':
          processor.getSynonyms(cli.input[1])
-         .then( (syn) => {
-            console.log(syn); // better logging
+         .then( (syno) => {
+            logger.logInfo(`Synonyms of the word "${syno.word}":`);
+            logger.logKeyInArray(syno.syn);
        })
        .catch( (err) => {
-            console.log(err); // important formatting
+            logger.logErr(err);
        });
      break;
     case 'ant':
          processor.getAntonyms(cli.input[1])
-         .then( (ant) => {
-            console.log(ant); // better logging
+         .then( (anto) => {
+            logger.logInfo(`Antonyms of the word "${anto.word}":`);
+            logger.logKeyInArray(anto.ant);
        })
        .catch( (err) => {
-            console.log(err);
+            logger.logErr(err);
        });   
      break;
     case 'ex':
          processor.getExamples(cli.input[1])
-         .then( (ex) => {
-            console.log(ex); // better logging
+         .then( (exam) => {
+            logger.logInfo(`Examples of the word "${exam.word}":`);
+            logger.logKeyInArray(exam.examples, "text");
        })
        .catch( (err) => {
-            console.log(err);
+            logger.logErr(err);
        });      
      break;
     case '':
          processor.wordOfTheDay()
          .then( (wod) => {
-            console.log(wod); // better logging
+            logger.logInfo(`Word of the day is "${wod.word}":`);
+            logger.logInfo(`Definitions of the word "${wod.word}":`);
+            logger.logKeyInArray(wod.def, "text");
+            logger.logInfo(`Synonyms of the word "${wod.word}":`);
+            logger.logKeyInArray(wod.syn);
+            logger.logInfo(`Antonyms of the word "${wod.word}":`);
+            logger.logKeyInArray(wod.ant);
+            logger.logInfo(`Examples of the word "${wod.word}":`);
+            logger.logKeyInArray(wod.ex, "text");    
        })
        .catch( (err) => {
-            console.log(err);
+            logger.logErr(err);
        });
      break;
     case 'play':
          processor.letsPlay()
          .then( (result) => {
-            console.log(result); // better logging
+            if(result) {
+                logger.logInfo("Good job:)");
+            } else {
+                logger.logInfo("Bye:|Keep learning");
+            }
        })
        .catch( (err) => {
-            console.log(err);
+            logger.logErr(err);
        });
      break;
     default:
          processor.getDetails(cli.input[0])
          .then( (details) => {
-            if (details) {
-              console.log("Great! That's a correct answer");
-            } else {
-              console.log("It's ok keep learning");
-            }
+            logger.logInfo(`Definitions of the word "${details.word}":`);
+            logger.logKeyInArray(details.def, "text");
+            logger.logInfo(`Synonyms of the word "${details.word}":`);
+            logger.logKeyInArray(details.syn);
+            logger.logInfo(`Antonyms of the word "${details.word}":`);
+            logger.logKeyInArray(details.ant);
+            logger.logInfo(`Examples of the word "${details.word}":`);
+            logger.logKeyInArray(details.ex, "text");
        })
        .catch( (err) => {
-            console.log(err);
+            logger.logErr(err);
        });
      break;
 }
